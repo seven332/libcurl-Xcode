@@ -1,8 +1,14 @@
 PODS:
-  - libcurl (7.76.0)
+  - libcurl/http_only (7.76.0):
+    - OpenSSL-Universal (= 1.1.1100)
+  - OpenSSL-Universal (1.1.1100)
 
 DEPENDENCIES:
-  - libcurl (from `../`)
+  - libcurl/http_only (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - OpenSSL-Universal
 
 EXTERNAL SOURCES:
   libcurl:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   libcurl: 57d6fd66d7a744dc5c2623a21ff4bc867c46b770
+  OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
 
-PODFILE CHECKSUM: 9e10a11d2a3bbec39e37ba9ba452e3d000726aad
+PODFILE CHECKSUM: 47a183bb2525f981f14717033dcd392919d1ce0f
 
 COCOAPODS: 1.10.0
