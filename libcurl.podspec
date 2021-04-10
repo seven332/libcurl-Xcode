@@ -1,42 +1,22 @@
-#
-# Be sure to run `pod lib lint libcurl.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'libcurl'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of libcurl.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/seven332/libcurl'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'seven332' => 'liangyou@fenbi.com' }
-  s.source           = { :git => 'https://github.com/seven332/libcurl.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  s.version          = '7.76.0'
+  s.summary          = 'client-side URL transfers'
+  s.homepage         = 'https://curl.se/libcurl/'
+  s.license          = { :file => 'curl/COPYING' }
+  s.author           = { 'Daniel Stenberg' => 'daniel@haxx.se' }
+  s.source           = { :git => 'https://github.com/seven332/libcurl-Xcode.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
+  s.default_subspec  = :none
+  s.compiler_flags   = '-DBUILDING_LIBCURL', '-DCURL_HIDDEN_SYMBOLS', '-DHAVE_CONFIG_H'
+  s.pod_target_xcconfig = {
+    'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/libcurl/curl/include/ ${PODS_TARGET_SRCROOT}/curl/include/',
+    'USER_HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/libcurl/curl/lib/ ${PODS_TARGET_SRCROOT}/curl/lib/'
+  }
 
-  s.source_files = 'libcurl/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'libcurl' => ['libcurl/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'http_only' do |ss|
+    ss.source_files = 'curl/lib/**/*.{h,c}', 'curl/include/curl/*.h', 'include/http_only/curl_config.h'
+    ss.public_header_files   = 'curl/include/curl/*.h'
+    ss.dependency 'OpenSSL-Universal', '1.1.1100'
+  end
 end

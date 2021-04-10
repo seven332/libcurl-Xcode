@@ -1,0 +1,16 @@
+PODS:
+  - libcurl (7.76.0)
+
+DEPENDENCIES:
+  - libcurl (from `../`)
+
+EXTERNAL SOURCES:
+  libcurl:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  libcurl: 57d6fd66d7a744dc5c2623a21ff4bc867c46b770
+
+PODFILE CHECKSUM: 9e10a11d2a3bbec39e37ba9ba452e3d000726aad
+
+COCOAPODS: 1.10.0
